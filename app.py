@@ -6,6 +6,11 @@ from flask import Flask
 # create the application object
 app = Flask(__name__)
 
+# dynamic route
+@app.route("/test/<search_query>")
+def search(search_query):
+    return search_query
+
 # use decorators to link the function to a url
 @app.route("/")
 @app.route("/hello")

@@ -6,7 +6,17 @@ from flask import Flask
 # create the application object
 app = Flask(__name__)
 
+# error handling
+app.config["DEBUG"] = True
+
 # dynamic route
+@app.route("/name/<name>")
+def index(name):
+    if name.lower() == "david":
+        return "Hello, {}".format(name), 200
+    else:
+        return "Not Found", 404
+
 @app.route("/integer/<int:value>")
 def int_type(value):
     print value + 1
@@ -31,6 +41,7 @@ def search(search_query):
 @app.route("/hello")
 
 # define the view using a function, which returns a string
+
 def hello_world():
     return "Hello, World!"
 
